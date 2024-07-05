@@ -55,6 +55,10 @@
 	.logged_in {
 		display: none;
 	}
+	/* fix text color in search filters  */
+	form#search_form label {
+		color: var(--text-color);
+	}
 
 	/* LEFT MENU */
 	/* remove bold */
