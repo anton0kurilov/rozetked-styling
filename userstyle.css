@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ReRozetked
 @namespace      github.com/openstyles/stylus
-@version        2024.7.4
+@version        2024.7.8
 @description    Make Rozetked Great Again
 @author         Anton Kurilov (kurilov.site)
 ==/UserStyle== */
@@ -44,7 +44,7 @@
 		border-radius: var(--border-radius);
 	}
 	.in_loading:before {
-		border-radius: 7.5px;
+		border-radius: var(--border-radius);
 	}
 	body.scheme_dark .in_loading:before {
 		background-color: rgba(0, 0, 0, 0.7);
@@ -65,7 +65,6 @@
 		}
 	}
 	/* RIGHT MENU */
-	/* set right border radius and text size for previews */
 	.article-photo-preview {
 		border-radius: var(--border-radius);
 	}
@@ -85,8 +84,20 @@
 		right: 20px;
 	}
 	/* CONTENT */
+	/* change border radius for content cards */
 	.block {
 		border-radius: var(--border-radius);
+	}
+	.article-preview__img-wrap:before {
+		border-radius: var(--border-radius) var(--border-radius) 0px 0px !important;
+	}
+	/* fix dark mode for carousel buttons */
+	body.scheme_dark .f-button {
+		background-color: #555;
+		color: #222;
+		&:hover:not([disabled]) {
+			background-color: #444;
+		}
 	}
 	/* remove subscribe banner */
 	.subscribe-block {
@@ -273,6 +284,20 @@
 	}
 
 	body.scheme_dark {
+		.form-group > span > [type='radio'] + label {
+			background-color: #555;
+			color: #fff;
+			border-radius: var(--border-radius);
+			margin: 0 5px;
+			transition: all 0.5s;
+			&:hover {
+				background-color: #505050;
+			}
+		}
+		.form-group > span > [type='radio']:checked + label {
+			background-color: var(--color-bg);
+			color: #000;
+		}
 		.editor-v2,
 		.acp .upload_main_image,
 		.acp .editor-inner-block {
@@ -457,7 +482,7 @@
 }
 @-moz-document url-prefix("https://rozetked.me/acp/post2/")
 {
-	/* remove admin menu from editing page */
+	/* remove admin menu from editor page */
 	.admin-menu-list {
 		display: none;
 	}
