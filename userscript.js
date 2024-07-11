@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReRozetked
 // @namespace    https://kurilov.site/
-// @version      2024.7.9
+// @version      2024.7.10
 // @description  Make Rozetked Great Again
 // @author       Anton Kurilov (kurilov.site)
 // @match        https://rozetked.me/*
