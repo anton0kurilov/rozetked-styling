@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReRozetked
 // @namespace    https://kurilov.site/
-// @version      2024.7.4
+// @version      2024.7.9
 // @description  Make Rozetked Great Again
 // @author       Anton Kurilov (kurilov.site)
 // @match        https://rozetked.me/*
@@ -11,18 +11,38 @@
 // ==/UserScript==
 
 // redirect to post editing when Ctrl+E logged
-let currentURl = document.URL
+let currentURL = window.location.href
 if (
-	currentURl.includes('articles/') ||
-	currentURl.includes('news/') ||
-	currentURl.includes('reviews/') ||
-	currentURl.includes('posts/')
+	currentURL.includes('articles/') ||
+	currentURL.includes('news/') ||
+	currentURL.includes('reviews/') ||
+	currentURL.includes('posts/')
 ) {
-	let postURl = currentURl.match(/\b\d{5}\b/g)
+	let postID = currentURL.match(/\b\d{5}\b/g)
 	document.addEventListener('keydown', function (event) {
 		if (event.code == 'KeyE' && (event.ctrlKey || event.metaKey)) {
 			window.location.href =
-				'https://rozetked.me/acp/post2/edit/' + postURl
+				'https://rozetked.me/acp/post2/edit/' + postID
 		}
 	})
+}
+
+// add Open button to adminpanel
+if (currentURL.includes('/acp/post/list')) {
+	let tableNodes = document.getElementsByTagName('tr')
+	for (let i = 0; i < tableNodes.length; i++) {
+		let link = tableNodes[i].querySelector('a')
+		if (link) {
+			let linkID = link.href.match(/\b\d{5}\b/)
+			if (linkID) {
+				let newCell = document.createElement('td')
+				let newLink = document.createElement('a')
+				newCell.classList.add('publink')
+				newLink.href = 'https://rozetked.me/news/' + linkID[0]
+				newLink.textContent = 'Открыть'
+				newCell.appendChild(newLink)
+				tableNodes[i].appendChild(newCell)
+			}
+		}
+	}
 }
