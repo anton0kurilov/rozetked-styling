@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ReRozetked
 @namespace      github.com/openstyles/stylus
-@version        2024.7.11
+@version        2024.7.12
 @description    Make Rozetked Great Again
 @author         Anton Kurilov (kurilov.site)
 ==/UserStyle== */
@@ -236,6 +236,7 @@
 			color: #aaa;
 		}
 	}
+
 	/* all posts styling */
 	body.scheme_dark .acp .admin-table tr {
 		transition: all 0.5s;
@@ -243,27 +244,12 @@
 			background-color: #232323;
 		}
 	}
-	.acp .admin-table tr:hover * {
-		color: var(--text-color) !important;
-	}
-	.acp .admin-table tr td.h1 > span,
-	.acp .admin-table tr td.pblc_type > span {
+	.acp .admin-table tr td.h1 > span {
 		background-color: #555 !important;
 	}
-	.acp .admin-table tr td.pblc_type > span,
-	.acp .admin-table tr:hover td.pblc_type > span,
 	.acp .admin-table tr td.h1 > span {
 		color: #fff !important;
 	}
-
-	body.scheme_dark .acp .admin-table tr:hover *,
-	.acp .admin-table tr:hover *,
-	.admin-table tr .user,
-	.admin-table tr .user span,
-	.tbl-posts tr .h1 a:hover {
-		color: var(--text-color) !important;
-	}
-
 	body.scheme_dark .acp .admin-table tr .publink a,
 	.acp .admin-table tr .publink a {
 		text-decoration: none;
@@ -279,6 +265,20 @@
 			color: #000 !important;
 		}
 	}
+	.tbl-posts tr .tg_link {
+		background-color: #2fa3e6;
+		padding: 5px 10px;
+		border-radius: var(--border-radius);
+		font-weight: 600;
+		transition: all 0.5s;
+		display: inline;
+		color: #000 !important;
+		&:hover {
+			background-color: #1889ca;
+			color: #000 !important;
+		}
+	}
+
 	/* set right height and hover effect for 'Undo' button */
 	.butpanel ._cancel {
 		padding: 19px 0;
