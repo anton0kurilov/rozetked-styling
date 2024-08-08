@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReRozetked
 // @namespace    https://kurilov.site/
-// @version      2024.8.1
+// @version      2024.8.2
 // @description  Make Rozetked Great Again
 // @author       Anton Kurilov (kurilov.site)
 // @match        https://rozetked.me/*
@@ -29,7 +29,12 @@ if (
 
 // add Open button to adminpanel
 if (currentURL.includes('/acp/post/list')) {
-	let tableNodes = document.getElementsByTagName('tr')
+	let tableNodes = document.getElementsByTagName('tr'),
+		tgLinks = document.getElementsByClassName('tg_link')
+
+	for (let i = 0; i < tgLinks.length; i++) {
+		tgLinks[i].textContent = 'TG'
+	}
 	for (let i = 0; i < tableNodes.length; i++) {
 		let link = tableNodes[i].querySelector('a')
 		if (link) {
@@ -44,5 +49,25 @@ if (currentURL.includes('/acp/post/list')) {
 				tableNodes[i].appendChild(newCell)
 			}
 		}
+	}
+}
+
+// symbols counter
+window.onload
+if (currentURL.includes('/acp/post2')) {
+	window.onload = function () {
+		let paragraphNodes = document.querySelector(
+				'.codex-editor__redactor'
+			).children,
+			textContent = ''
+		for (let i = 0; i < paragraphNodes.length; i++) {
+			textContent += paragraphNodes[i].textContent
+		}
+		let textCounter = document.createElement('div')
+		textCounter.classList.add('symbols-count')
+		textCounter.textContent = 'Символов: ' + textContent.length + ''
+		document
+			.querySelector('.codex-editor')
+			.insertAdjacentElement('beforebegin', textCounter)
 	}
 }
