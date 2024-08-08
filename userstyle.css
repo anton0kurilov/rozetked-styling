@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ReRozetked
 @namespace      github.com/openstyles/stylus
-@version        2024.7.12
+@version        2024.8.1
 @description    Make Rozetked Great Again
 @author         Anton Kurilov (kurilov.site)
 ==/UserStyle== */
@@ -493,6 +493,12 @@
 			padding: 12px 14px;
 			line-height: 20px;
 			border: 0;
+		}
+	}
+	@media screen and (max-width: 1000px) {
+		body.site .quicklinks {
+			width: calc(100% - var(--container-padding));
+			margin: 20px 10px 20px 10px;
 		}
 	}
 }

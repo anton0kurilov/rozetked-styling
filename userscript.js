@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReRozetked
 // @namespace    https://kurilov.site/
-// @version      2024.7.12
+// @version      2024.8.1
 // @description  Make Rozetked Great Again
 // @author       Anton Kurilov (kurilov.site)
 // @match        https://rozetked.me/*
@@ -27,13 +27,9 @@ if (
 	})
 }
 
+// add Open button to adminpanel
 if (currentURL.includes('/acp/post/list')) {
-	let tableNodes = document.getElementsByTagName('tr'),
-		tgLinks = document.getElementsByClassName('tg_link')
-
-	for (let i = 0; i < tgLinks.length; i++) {
-		tgLinks[i].textContent = 'TG'
-	}
+	let tableNodes = document.getElementsByTagName('tr')
 	for (let i = 0; i < tableNodes.length; i++) {
 		let link = tableNodes[i].querySelector('a')
 		if (link) {
