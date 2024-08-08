@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ReRozetked
 @namespace      github.com/openstyles/stylus
-@version        2024.8.2
+@version        2024.8.1
 @description    Make Rozetked Great Again
 @author         Anton Kurilov (kurilov.site)
 ==/UserStyle== */
@@ -289,6 +289,18 @@
 		}
 	}
 	/* editor styling */
+	.symbols-count {
+		background-color: #373737;
+		max-width: 960px;
+		position: absolute;
+		top: 25px;
+		padding: 8px 15px;
+		box-sizing: border-box;
+		border-radius: var(--border-radius);
+		color: #fff;
+		font-size: small;
+		font-weight: bold;
+	}
 	section.no-top-pad {
 		padding-top: 25px !important;
 	}
