@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReRozetked
 // @namespace    https://kurilov.site/
-// @version      2024.8.3
+// @version      2024.8.4
 // @description  Make Rozetked Great Again
 // @author       Anton Kurilov (kurilov.site)
 // @match        https://rozetked.me/*
@@ -54,7 +54,7 @@ if (currentURL.includes('/acp/post/list')) {
 
 // symbols counter
 window.onload
-if (currentURL.includes('/acp/post2')) {
+if (currentURL.includes('/acp/post2/edit')) {
 	window.onload = function () {
 		let paragraphNodes = document.querySelector(
 				'.codex-editor__redactor'

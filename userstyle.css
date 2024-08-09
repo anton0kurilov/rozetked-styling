@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ReRozetked
 @namespace      github.com/openstyles/stylus
-@version        2024.8.3
+@version        2024.8.4
 @description    Make Rozetked Great Again
 @author         Anton Kurilov (kurilov.site)
 ==/UserStyle== */
@@ -300,6 +300,7 @@
 		color: #fff;
 		font-size: small;
 		font-weight: bold;
+		z-index: 990;
 	}
 	section.no-top-pad {
 		padding-top: 25px !important;
@@ -307,6 +308,7 @@
 	.watermark_settings {
 		top: 0;
 		padding: 15px 25px;
+		z-index: 991;
 		h5 {
 			margin: 0 0 10px 0;
 		}
@@ -341,9 +343,8 @@
 			color: #000;
 		}
 		.editor-v2,
-		.acp .upload_main_image,
-		.acp .editor-inner-block {
-			background-color: #2e2e2e;
+		.acp .upload_main_image {
+			background-color: #2d2d2d;
 		}
 		.codex-editor__redactor,
 		.editor-v2 > .codex-editor > .codex-editor__redactor {
@@ -375,16 +376,25 @@
 			background-color: #373737;
 			border: 1px solid #555555;
 		}
-		.ce-popover-item {
-			color: var(--text-color);
+		.ce-popover-item__icon,
+		.ce-popover-item__icon * {
+			color: var(--text-color) !important;
 		}
-		.ce-conversion-toolbar__label {
+		.ce-conversion-toolbar__label,
+		.ce-popover-item:hover:not(.ce-popover-item--no-hover) * {
 			color: #fff;
 		}
 		.ce-conversion-tool:hover,
 		.ce-inline-tool:hover,
 		.ce-inline-toolbar__dropdown:hover,
 		.ce-popover-item:hover:not(.ce-popover-item--no-hover) {
+			background-color: #2d2d2d;
+		}
+		.cdx-button {
+			background-color: #555;
+			color: var(--text-color);
+		}
+		.image-gallery__tune.active {
 			background-color: #2d2d2d;
 		}
 		.ce-conversion-tool--focused,
@@ -400,11 +410,20 @@
 			color: #707684;
 		}
 		.butpanel,
-		.watermark_settings {
+		.butpanel .watermark_settings {
 			background: rgba(46, 46, 46, 0.1) !important;
 		}
 		.preview-group label input:checked + img {
 			outline: 2px solid var(--color-bg);
+		}
+		.butpanel {
+			z-index: 994;
+			._cancel {
+				background-color: #555;
+				&:hover {
+					background-color: #505050;
+				}
+			}
 		}
 	}
 	/* HEADER */
