@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name         ReRozetked
-// @namespace    https://kurilov.site/
-// @version      2024.8.4
+// @namespace    https://github.com/anton0kurilov/rozetked-styling
+// @version      2025.7.25
 // @description  Make Rozetked Great Again
-// @author       Anton Kurilov (kurilov.site)
+// @author       Anton Kurilov (kurilov.xyz)
 // @match        https://rozetked.me/*
 // @icon         https://www.google.com/s2/favicons?domain=rozetked.me
 // @require      http://code.jquery.com/jquery-latest.js
 // @grant        none
+// @downloadURL https://update.greasyfork.org/scripts/457979/ReRozetked.user.js
+// @updateURL https://update.greasyfork.org/scripts/457979/ReRozetked.meta.js
 // ==/UserScript==
 
 // redirect to post editing when Ctrl+E logged
@@ -27,6 +29,10 @@ if (
 	})
 }
 
+// change site logo
+let getLogoAttribute = document.querySelector('.logo__img')
+getLogoAttribute.setAttribute('src', '/imgs/logo-icon.png')
+
 // add Open button to adminpanel
 if (currentURL.includes('/acp/post/list')) {
 	let tableNodes = document.getElementsByTagName('tr'),
@@ -44,7 +50,7 @@ if (currentURL.includes('/acp/post/list')) {
 				let newLink = document.createElement('a')
 				newCell.classList.add('publink')
 				newLink.href = 'https://rozetked.me/news/' + linkID[0]
-				newLink.textContent = 'Открыть'
+				newLink.textContent = '↗︎'
 				newCell.appendChild(newLink)
 				tableNodes[i].appendChild(newCell)
 			}
@@ -52,22 +58,15 @@ if (currentURL.includes('/acp/post/list')) {
 	}
 }
 
-// symbols counter
-window.onload
-if (currentURL.includes('/acp/post2/edit')) {
-	window.onload = function () {
-		let paragraphNodes = document.querySelector(
-				'.codex-editor__redactor'
-			).children,
-			textContent = ''
-		for (let i = 0; i < paragraphNodes.length; i++) {
-			textContent += paragraphNodes[i].textContent
-		}
-		let textCounter = document.createElement('div')
-		textCounter.classList.add('symbols-count')
-		textCounter.textContent = 'Символов: ' + textContent.length + ''
-		document
-			.querySelector('.codex-editor')
-			.insertAdjacentElement('beforebegin', textCounter)
-	}
+// fuck watermark's selector bug
+if (currentURL.includes('/acp/post2/edit/')) {
+	document
+		.querySelectorAll('.watermark_settings .wmt')
+		.forEach(function (el) {
+			el.classList.remove('active')
+		})
+	document
+		.querySelector('.watermark_settings .wmt[data-type=no]')
+		.classList.add('active')
+	setCookie('wm_type', 'no', { expires: 3600 })
 }
