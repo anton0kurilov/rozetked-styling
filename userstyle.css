@@ -1,12 +1,11 @@
 /* ==UserStyle==
 @name         ReRozetked
-@version      2025.08.03
+@version      2025.10.02
 @namespace    https://github.com/anton0kurilov/rozetked-styling
 @description  Make Rozetked Great Again
 @author       Anton Kurilov (kurilov.xyz)
 @license      No License
 ==/UserStyle== */
-
 @-moz-document domain("rozetked.me") {
 	:root {
 		--border-radius: 10px;
@@ -182,6 +181,19 @@
 	.menu__item:nth-child(10),
 	.menu__item:nth-child(11) {
 		display: none;
+	}
+
+	.menu__link.active {
+		padding: 10px 25px;
+		border-radius: 50px;
+	}
+
+	body .menu__link.active {
+		background-color: #d0d0d0;
+	}
+
+	body.scheme_dark .menu__link.active {
+		background-color: #2f2f2f;
 	}
 
 	.menu .acplink {
@@ -493,6 +505,28 @@
 		border: 0;
 	}
 
+	.flatpickr-day.selected,
+	.flatpickr-day.startRange,
+	.flatpickr-day.endRange,
+	.flatpickr-day.selected.inRange,
+	.flatpickr-day.startRange.inRange,
+	.flatpickr-day.endRange.inRange,
+	.flatpickr-day.selected:focus,
+	.flatpickr-day.startRange:focus,
+	.flatpickr-day.endRange:focus,
+	.flatpickr-day.selected:hover,
+	.flatpickr-day.startRange:hover,
+	.flatpickr-day.endRange:hover,
+	.flatpickr-day.selected.prevMonthDay,
+	.flatpickr-day.startRange.prevMonthDay,
+	.flatpickr-day.endRange.prevMonthDay,
+	.flatpickr-day.selected.nextMonthDay,
+	.flatpickr-day.startRange.nextMonthDay,
+	.flatpickr-day.endRange.nextMonthDay {
+		background-color: var(--brand-color);
+		color: var(--sub-color) !important;
+	}
+
 	body.scheme_dark {
 		input[type='text'],
 		input[type='text']:hover,
@@ -521,6 +555,11 @@
 		.flatpickr-day,
 		.flatpickr-time input {
 			color: var(--color-text);
+		}
+
+		.flatpickr-months .flatpickr-prev-month,
+		.flatpickr-months .flatpickr-next-month {
+			fill: #555;
 		}
 
 		.flatpickr-day.flatpickr-disabled,
@@ -584,9 +623,14 @@
 			}
 		}
 
+		.acp .upload_main_image .upload_text {
+			transition: all 0.3s;
+		}
+
 		.acp .upload_main_image .inner:hover .upload_text {
 			border-radius: var(--border-radius) var(--border-radius) 0 0;
-			background: var(--sub-color);
+			background: rgba(0, 0, 0, 0.5);
+			backdrop-filter: blur(10px);
 		}
 
 		.acp .editor-inner-block {
@@ -672,11 +716,22 @@
 			color: #707684;
 		}
 
-		.butpanel,
+		.tc-popover,
+		.tc-popover__item-icon {
+			background-color: #373737;
+			border: 1px solid #555555;
+		}
+
 		.butpanel .watermark_settings,
 		.watermark_settings {
 			background: rgba(46, 46, 46, 0.1) !important;
 			border-bottom: var(--block-border);
+		}
+
+		.butpanel {
+			background: rgba(46, 46, 46, 0.1) !important;
+			border-bottom: 0;
+			border-top: var(--block-border);
 		}
 
 		.preview-group label input:checked + img {
@@ -691,6 +746,10 @@
 					background-color: #505050;
 				}
 			}
+		}
+
+		.acp .admin-table tr td._actions a span {
+			color: white;
 		}
 	}
 
