@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         ReRozetked
-@version      2025.10.02
+@version      2025.11.03
 @namespace    https://github.com/anton0kurilov/rozetked-styling
 @description  Make Rozetked Great Again
 @author       Anton Kurilov (kurilov.xyz)
@@ -66,6 +66,7 @@
 	.tgme_post_discussion_login_btn,
 	.select2-container--default .select2-selection--single {
 		border-radius: var(--border-radius);
+		corner-shape: squircle;
 	}
 
 	a.btn,
@@ -75,6 +76,7 @@
 	input[type='submit'],
 	.acp .title_block ._actions a {
 		border-radius: var(--border-radius);
+		corner-shape: squircle;
 		transition: all 0.5s;
 		&:hover {
 			background-color: var(--brand-hover-color);
@@ -93,6 +95,7 @@
 		height: calc(100vh - var(--block-margin) * 2);
 		margin: var(--block-margin);
 		border-radius: var(--border-radius);
+		corner-shape: squircle;
 		background-color: var(--body-color);
 		border: var(--block-border);
 		display: flex;
@@ -103,6 +106,29 @@
 	.logged_in,
 	.twitter-typeahead {
 		display: none !important;
+	}
+
+	.twitter-typeahead {
+		position: fixed !important;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 998;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.search__input.tt-input {
+		position: relative !important;
+		background-color: #fff !important;
+		border: 3px solid var(--brand-color);
+		color: #000 !important;
+		box-shadow: -90px 30px 60px rgba(0, 0, 0, 0.19),
+			0 20px 20px rgba(0, 0, 0, 0.23) !important;
 	}
 
 	.header__logo {
@@ -209,6 +235,7 @@
 			background-color: var(--brand-color);
 			padding: 12px 14px;
 			border-radius: var(--border-radius);
+			corner-shape: squircle;
 			height: 20px;
 			display: block;
 			transition: all 0.5s;
@@ -264,6 +291,7 @@
 	.block {
 		border: var(--block-border);
 		border-radius: var(--border-radius);
+		corner-shape: squircle;
 	}
 
 	.block.block--transparent {
@@ -272,10 +300,12 @@
 
 	.__embed > iframe {
 		border-radius: var(--border-radius);
+		corner-shape: squircle;
 	}
 
 	.article-preview__img-wrap:before {
 		border-radius: var(--border-radius) var(--border-radius) 0px 0px !important;
+		corner-shape: squircle;
 	}
 
 	.main-news__name .link,
@@ -295,6 +325,7 @@
 
 	.telegam_comments iframe {
 		border-radius: var(--border-radius);
+		corner-shape: squircle;
 	}
 
 	.pagination__page {
@@ -313,6 +344,7 @@
 		height: 30px;
 		padding: 0;
 		border-radius: 7.5px;
+		corner-shape: squircle;
 		margin: 0;
 	}
 
@@ -732,6 +764,7 @@
 			background: rgba(46, 46, 46, 0.1) !important;
 			border-bottom: 0;
 			border-top: var(--block-border);
+			padding-top: 25px;
 		}
 
 		.preview-group label input:checked + img {
