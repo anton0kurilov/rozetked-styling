@@ -1,12 +1,13 @@
 /* ==UserStyle==
 @name         ReRozetked
-@version      2025.11.08
+@version      2025.12.03
 @namespace    https://github.com/anton0kurilov/rozetked-styling
 @description  Make Rozetked Great Again
 @author       Anton Kurilov (kurilov.xyz)
 @license      No License
 ==/UserStyle== */
 @-moz-document domain("rozetked.me") {
+	/* VARIABLES */
 	:root {
 		--border-radius: 10px;
 		--brand-color: #e5c41d;
@@ -32,10 +33,7 @@
 	body {
 		scroll-behavior: smooth;
 		opacity: 0;
-		animation: fadeIn ease-in 1;
-		animation-fill-mode: forwards;
-		animation-duration: 0.3s;
-		animation-delay: 0.2s;
+		animation: fadeIn 0.3s ease-in 0.2s 1 forwards;
 	}
 
 	@keyframes fadeIn {
@@ -94,21 +92,21 @@
 		width: var(--header-width);
 		height: calc(100vh - var(--block-margin) * 2);
 		margin: var(--block-margin);
-		border-radius: var(--border-radius);
-		corner-shape: squircle;
-		background-color: var(--body-color);
-		border: var(--block-border);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		border: var(--block-border);
+		border-radius: var(--border-radius);
+		corner-shape: squircle;
+		background-color: var(--body-color);
 	}
 
-	.logged_in,
-	.twitter-typeahead {
+	.logged_in {
 		display: none !important;
 	}
 
 	.twitter-typeahead {
+		display: none !important;
 		position: fixed !important;
 		top: 0;
 		bottom: 0;
@@ -226,20 +224,20 @@
 		position: fixed;
 		bottom: 10px;
 		right: 10px;
-		background: none;
+		z-index: 999;
 		display: flex;
 		gap: 5px;
+		background: none;
 		font-size: 1em;
-		z-index: 999;
 		& a {
-			background-color: var(--brand-color);
+			display: block;
+			height: 20px;
 			padding: 12px 14px;
+			font-weight: 600;
+			background-color: var(--brand-color);
 			border-radius: var(--border-radius);
 			corner-shape: squircle;
-			height: 20px;
-			display: block;
 			transition: all 0.5s;
-			font-weight: 600;
 			&:hover {
 				background-color: var(--brand-hover-color);
 			}
@@ -377,9 +375,6 @@
 
 	.acp .admin-table tr td.h1 > span {
 		background-color: #555 !important;
-	}
-
-	.acp .admin-table tr td.h1 > span {
 		color: #fff !important;
 	}
 
@@ -747,8 +742,10 @@
 		}
 
 		.image-gallery__tune.active,
-		.image-tool--loading {
+		.image-tool--loading,
+		.image-tool--loading .image-tool__image {
 			background-color: #2d2d2d;
+			border: 0;
 		}
 
 		.ce-conversion-tool--focused,
@@ -764,6 +761,10 @@
 
 		.cdx-search-field__input::placeholder {
 			color: #707684;
+		}
+
+		.editorjs-layout {
+			background-color: #333;
 		}
 
 		.tc-popover,
@@ -804,8 +805,8 @@
 		}
 
 		.SumoSelect > .optWrapper {
-			box-shadow: 0 0 0 3px rgba(229, 196, 29, 0.65);
-			border: 0;
+			box-shadow: none;
+			border: var(--block-border) !important;
 			top: 60px;
 			background-color: var(--body-color);
 			color: var(--text-color);
@@ -839,6 +840,10 @@
 	/* FOOTER */
 	.footer {
 		margin-left: calc(var(--header-width) + var(--block-margin));
+	}
+
+	body.acp .footer .container {
+		max-width: 100%;
 	}
 
 	/* MOBILE LAYOUT FIXES */
