@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReRozetked
 // @namespace    https://github.com/anton0kurilov/rozetked-styling
-// @version      2025.7.25
+// @version      2025.12.1
 // @description  Make Rozetked Great Again
 // @author       Anton Kurilov (kurilov.xyz)
 // @match        https://rozetked.me/*
@@ -12,15 +12,15 @@
 // @updateURL https://update.greasyfork.org/scripts/457979/ReRozetked.meta.js
 // ==/UserScript==
 
-// redirect to post editing when Ctrl+E logged
-let currentURL = window.location.href
+const CURRENT_URL = window.location.href
 if (
-	currentURL.includes('articles/') ||
-	currentURL.includes('news/') ||
-	currentURL.includes('reviews/') ||
-	currentURL.includes('posts/')
+	CURRENT_URL.includes('articles/') ||
+	CURRENT_URL.includes('news/') ||
+	CURRENT_URL.includes('reviews/') ||
+	CURRENT_URL.includes('posts/')
 ) {
-	let postID = currentURL.match(/\b\d{5}\b/g)
+	// redirect to post editing when Ctrl+E logged
+	let postID = CURRENT_URL.match(/\b\d{5}\b/g)
 	document.addEventListener('keydown', function (event) {
 		if (event.code == 'KeyE' && (event.ctrlKey || event.metaKey)) {
 			window.location.href =
@@ -30,11 +30,11 @@ if (
 }
 
 // change site logo
-let getLogoAttribute = document.querySelector('.logo__img')
+const getLogoAttribute = document.querySelector('.logo__img')
 getLogoAttribute.setAttribute('src', '/imgs/logo-icon.png')
 
 // add Open button to adminpanel
-if (currentURL.includes('/acp/post/list')) {
+if (CURRENT_URL.includes('/acp/post/list')) {
 	let tableNodes = document.getElementsByTagName('tr'),
 		tgLinks = document.getElementsByClassName('tg_link')
 
@@ -59,7 +59,7 @@ if (currentURL.includes('/acp/post/list')) {
 }
 
 // fuck watermark's selector bug
-if (currentURL.includes('/acp/post2/edit/')) {
+if (CURRENT_URL.includes('/acp/post2/edit/')) {
 	document
 		.querySelectorAll('.watermark_settings .wmt')
 		.forEach(function (el) {
@@ -69,4 +69,12 @@ if (currentURL.includes('/acp/post2/edit/')) {
 		.querySelector('.watermark_settings .wmt[data-type=no]')
 		.classList.add('active')
 	setCookie('wm_type', 'no', { expires: 3600 })
+
+	// submit post when Ctrl+S logged
+	document.addEventListener('keydown', function (event) {
+		if (event.code == 'KeyS' && (event.ctrlKey || event.metaKey)) {
+			event.preventDefault()
+			document.querySelector('#post-form').submit()
+		}
+	})
 }
