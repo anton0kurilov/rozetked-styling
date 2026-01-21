@@ -14,19 +14,19 @@
 
 const CURRENT_URL = window.location.href
 if (
-	CURRENT_URL.includes('articles/') ||
-	CURRENT_URL.includes('news/') ||
-	CURRENT_URL.includes('reviews/') ||
-	CURRENT_URL.includes('posts/')
+    CURRENT_URL.includes('articles/') ||
+    CURRENT_URL.includes('news/') ||
+    CURRENT_URL.includes('reviews/') ||
+    CURRENT_URL.includes('posts/')
 ) {
-	// redirect to post editing when Ctrl+E logged
-	let postID = CURRENT_URL.match(/\b\d{5}\b/g)
-	document.addEventListener('keydown', function (event) {
-		if (event.code == 'KeyE' && (event.ctrlKey || event.metaKey)) {
-			window.location.href =
-				'https://rozetked.me/acp/post2/edit/' + postID
-		}
-	})
+    // redirect to post editing when Ctrl+E logged
+    let postID = CURRENT_URL.match(/\b\d{5}\b/g)
+    document.addEventListener('keydown', function (event) {
+        if (event.code == 'KeyE' && (event.ctrlKey || event.metaKey)) {
+            window.location.href =
+                'https://rozetked.me/acp/post2/edit/' + postID
+        }
+    })
 }
 
 // change site logo
@@ -35,46 +35,46 @@ getLogoAttribute.setAttribute('src', '/imgs/logo-icon.png')
 
 // add Open button to adminpanel
 if (CURRENT_URL.includes('/acp/post/list')) {
-	let tableNodes = document.getElementsByTagName('tr'),
-		tgLinks = document.getElementsByClassName('tg_link')
+    let tableNodes = document.getElementsByTagName('tr'),
+        tgLinks = document.getElementsByClassName('tg_link')
 
-	for (let i = 0; i < tgLinks.length; i++) {
-		tgLinks[i].textContent = 'TG'
-	}
-	for (let i = 0; i < tableNodes.length; i++) {
-		let link = tableNodes[i].querySelector('a')
-		if (link) {
-			let linkID = link.href.match(/\b\d{5}\b/)
-			if (linkID) {
-				let newCell = document.createElement('td')
-				let newLink = document.createElement('a')
-				newCell.classList.add('publink')
-				newLink.href = 'https://rozetked.me/news/' + linkID[0]
-				newLink.textContent = '↗︎'
-				newCell.appendChild(newLink)
-				tableNodes[i].appendChild(newCell)
-			}
-		}
-	}
+    for (let i = 0; i < tgLinks.length; i++) {
+        tgLinks[i].textContent = 'TG'
+    }
+    for (let i = 0; i < tableNodes.length; i++) {
+        let link = tableNodes[i].querySelector('a')
+        if (link) {
+            let linkID = link.href.match(/\b\d{5}\b/)
+            if (linkID) {
+                let newCell = document.createElement('td')
+                let newLink = document.createElement('a')
+                newCell.classList.add('publink')
+                newLink.href = 'https://rozetked.me/news/' + linkID[0]
+                newLink.textContent = '↗︎'
+                newCell.appendChild(newLink)
+                tableNodes[i].appendChild(newCell)
+            }
+        }
+    }
 }
 
 // fuck watermark's selector bug
 if (CURRENT_URL.includes('/acp/post2/edit/')) {
-	document
-		.querySelectorAll('.watermark_settings .wmt')
-		.forEach(function (el) {
-			el.classList.remove('active')
-		})
-	document
-		.querySelector('.watermark_settings .wmt[data-type=no]')
-		.classList.add('active')
-	setCookie('wm_type', 'no', { expires: 3600 })
+    document
+        .querySelectorAll('.watermark_settings .wmt')
+        .forEach(function (el) {
+            el.classList.remove('active')
+        })
+    document
+        .querySelector('.watermark_settings .wmt[data-type=no]')
+        .classList.add('active')
+    setCookie('wm_type', 'no', {expires: 3600})
 
-	// submit post when Ctrl+S logged
-	document.addEventListener('keydown', function (event) {
-		if (event.code == 'KeyS' && (event.ctrlKey || event.metaKey)) {
-			event.preventDefault()
-			document.querySelector('#post-form').submit()
-		}
-	})
+    // submit post when Ctrl+S logged
+    document.addEventListener('keydown', function (event) {
+        if (event.code == 'KeyS' && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault()
+            document.querySelector('#post-form').submit()
+        }
+    })
 }
