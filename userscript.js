@@ -3,7 +3,7 @@
 // @namespace    https://github.com/anton0kurilov/rozetked-styling
 // @version      2025.12.1
 // @description  Make Rozetked Great Again
-// @author       Anton Kurilov (kurilov.xyz)
+// @author       Anton Kurilov (https://kurilov.xyz)
 // @match        https://rozetked.me/*
 // @icon         https://www.google.com/s2/favicons?domain=rozetked.me
 // @require      http://code.jquery.com/jquery-latest.js
