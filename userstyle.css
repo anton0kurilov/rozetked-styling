@@ -1,9 +1,9 @@
 /* ==UserStyle==
 @name         ReRozetked
-@version      2026.01.02
+@version      2026.01.05
 @namespace    https://github.com/anton0kurilov/rozetked-styling
 @description  Make Rozetked Great Again
-@author       Anton Kurilov (kurilov.xyz)
+@author       Anton Kurilov (https://kurilov.xyz)
 @license      No License
 ==/UserStyle== */
 @-moz-document domain("rozetked.me") {
@@ -33,6 +33,7 @@
     body {
         scroll-behavior: smooth;
         opacity: 0;
+        overflow-x: hidden;
         animation: fadeIn 0.3s ease-in 0.2s 1 forwards;
     }
 
@@ -133,6 +134,9 @@
     .header__logo {
         margin: 0;
         transition: all 0.5s;
+        content: url('/imgs/logo-icon.png');
+        width: 50px;
+
         &:hover {
             transform: rotate(180deg);
         }
@@ -728,6 +732,7 @@
         .ce-popover-item__icon,
         .ce-popover-item__icon * {
             color: var(--text-color) !important;
+            fill: var(--text-color) !important;
         }
 
         .ce-conversion-toolbar__label,
